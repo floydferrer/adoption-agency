@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}{{pet.name}}{% endblock %}
+{% block content %}
+    <div class="container-fluid">
+        <h1 class="display-1">{{pet.name}}</h1>
+        <img src="{{pet.photo_url}}" style="width: 500px;">
+        <p class="display-5">Species: {{pet.species}}</p>
+        <p class="display-5">Age: {{pet.age}}</p>
+        <p class="display-6">{{pet.notes}}</p>
+        <p class="display-5">{{pet.name}} is {% if pet.available == False %} not {% endif %}available</p>
+        <button onclick="window.location.href='/pets/{{pet.id}}/edit';" class="btn btn-outline-warning ms-2 mt-2">Edit Pet</button>
+        <button onclick="window.location.href='/';" class="btn btn-outline-success ms-2 mt-2">Home</button>
+    </div>
+    {% endblock %}

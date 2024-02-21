@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}Pet List{% endblock %}
+{% block content %}
+    <h1 class="display-1 text-center">Pet List</h1>
+        <section>    
+            <div class="container">
+                <h2 class="display-5 text-center">Available</h2>
+                <div class="row">
+                    {% for pet in pets %}       
+                    {% if pet.available %}
+                    <div class="col-4">
+                        <a href="/pets/{{pet.id}}"><img class="rounded mx-auto d-block" style="width: 300px;" src="{{pet.photo_url}}"></a>
+                        <p class="display-6 text-center">{{pet.name}} is available!</p>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="d-grid gap-2">
+                    <button onclick="window.location.href='/add-pet';" class="btn btn-outline-success">Add Pet</button>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="container">
+            <h2 class="display-5 text-center">Adopted</h2>
+                <div class="row">
+                    {% for pet in pets %}
+                    {% if pet.available == False %}
+                    <div class="col-4">
+                        <a href="/pets/{{pet.id}}"><img class="rounded mx-auto d-block" style="width: 300px;" src="{{pet.photo_url}}"></a>
+                        <p class="display-6 text-center">{{pet.name}}</p>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+{% endblock %}
